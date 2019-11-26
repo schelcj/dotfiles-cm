@@ -1,0 +1,5 @@
+doc/tags*
+*.pyc
+.vstags
+.vscode
+.code_workspace

@@ -1,0 +1,11 @@
+{{- $email := promptString "email" -}}
+{{- $lat   := promptString "Latitude" -}}
+{{- $lon   := promptString "Longitude" -}}
+{{- $ident := promptString "Perl Indent Columns" -}}
+[data]
+  email = "{{ $email }}"
+  lat = "{{ $lat }}"
+  lon = "{{ $lon }}"
+
+  [data.perl]
+    column_indent = "{{ $indent }}"
