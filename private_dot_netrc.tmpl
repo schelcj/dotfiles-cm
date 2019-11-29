@@ -1,0 +1,3 @@
+machine imap.googlemail.com
+  login {{ (index (lastpass "Chris (gmail)") 0).username }}
+  password {{ (index (lastpass "Chris (gmail)") 0).password }}
