@@ -1,0 +1,18 @@
+folder-hook 'Merit/*' 'set folder="~/Mail/Merit/"'
+folder-hook 'Merit/*' 'set spoolfile="+INBOX"'
+folder-hook 'Merit/*' 'set record="+[Gmail].Sent Mail"'
+folder-hook 'Merit/*' 'set from=schelcj@merit.edu'
+folder-hook 'Merit/*' 'set signature=~/.mutt/signature.merit'
+folder-hook 'Merit/*' 'color status black cyan'
+folder-hook 'Merit/*' 'color indicator black cyan'
+folder-hook 'Merit/*' 'macro index G "<shell-escape>offlineimap -u basic -1 -o -a Merit<return>" "Fetch mail from my Merit account"'
+
+# folder-hook 'Merit/*' 'set smtp_url="smtp://schelcj%40merit.edu@smtp.gmail.com:587/"'
+folder-hook 'Merit/*' 'set smtp_url="smtp://schelcj%40pobox.com@smtp.pobox.com:587/"'
+
+lists software-dev productmanagement it-dev staff radb-support
+subscribe software-dev productmanagement it-dev staff radb-support
+
+mailboxes ~/Mail/Merit/INBOX
+mailboxes ~/Mail/Merit/cron
+mailboxes ~/Mail/Merit/radb-support
