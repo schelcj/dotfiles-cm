@@ -1,0 +1,18 @@
+[options]
+verbose = 1
+read_all = false
+delete = false
+message_log = ~/.getmail/avlug_log
+
+[retriever]
+type = SimpleIMAPSSLRetriever
+server = mail.avlug.org
+port = 993
+username = {{ (index (lastpass "avlug.org") 0).username }}
+password = {{ (index (lastpass "avlug.org") 0).password }}
+mailboxes = ("INBOX.Archive","INBOX.Sent")
+
+[destination]
+type = MDA_external
+path = /usr/bin/procmail
+arguments = ("-f", "%(sender)", "-m", "~/.procmailrc.d/avlug")

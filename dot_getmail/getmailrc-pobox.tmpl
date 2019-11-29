@@ -1,0 +1,18 @@
+[options]
+verbose = 0
+read_all = false
+delete = false
+message_log = ~/.getmail/pobox_log
+
+[retriever]
+type = SimpleIMAPSSLRetriever
+server = imap.gmail.com
+port = 993
+username = {{ (index (lastpass "Chris (gmail)") 0).username }}
+password = {{ (index (lastpass "Chris (gmail)") 0).password }}
+mailboxes = ("[Gmail]/All Mail", "[Gmail]/Sent Mail")
+
+[destination]
+type = MDA_external
+path = /usr/bin/procmail
+arguments = ("-f", "%(sender)", "-m", "~/.procmailrc.d/pobox")
