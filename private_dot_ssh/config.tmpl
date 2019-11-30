@@ -1,0 +1,13 @@
+# LogLevel VERBOSE
+
+Host *
+  ForwardX11 no
+  ForwardX11Trusted no
+  ServerAliveInterval 300
+  TCPKeepAlive yes
+  ControlPath ~/.ssh/master-%r@%h:%p
+
+{{- if ne .chezmoi.hostname "klinger" }}
+
+Include config.d/*.conf
+{{- end }}
