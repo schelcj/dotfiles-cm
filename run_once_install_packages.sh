@@ -1,20 +1,106 @@
 #!/bin/sh
 
-# TODO - define all the pacakges I need in here
-
-exit
-
-# NOTE - lastpass-cli dependencies
-apt-get --no-install-recommends -yqq install \
+sudo apt-get -yqq install \
+  asciidoc \
+  aumix-gtk \
+  autossh \
   bash-completion \
+  blueman \
   build-essential \
-  cmake \
-  libcurl4  \
-  libcurl4-openssl-dev  \
-  libssl-dev  \
-  libxml2 \
-  libxml2-dev  \
-  libssl1.1 \
-  pkg-config \
   ca-certificates \
-  xclip
+  cifs-utils \
+  clipit \
+  cmake \
+  colordiff \
+  colortail \
+  ctags \
+  curl \
+  dstat \
+  evtest \
+  feh \
+  git \
+  gksu \
+  gpick \
+  htmldoc \
+  htop \
+  inxi \
+  iotop \
+  k3b \
+  keepassx \
+  libao-dev \
+  libavfilter-dev \
+  libavformat-dev \
+  libcrypt-ssleay-perl \
+  libcurl4 \
+  libcurl4-openssl-dev \
+  libdbus-1-dev \
+  libdvd-pkg \
+  libexpat1-dev \
+  libfaad-dev \
+  libgcrypt11-dev \
+  liblocal-lib-perl \
+  libmad0-dev \
+  libnotify-dev \
+  libpango1.0-dev \
+  libssl-dev \
+  libssl-dev \
+  libssl1.1 \
+  libxdg-basedir-dev \
+  libxft-dev \
+  libxinerama-dev \
+  libxml2 \
+  libxml2-dev \
+  libxml2-dev \
+  libxss-dev \
+  mailutils \
+  mc \
+  mercurial \
+  mosh \
+  most \
+  mplayer \
+  network-manager-openconnect \
+  network-manager-openconnect-gnome \
+  network-manager-openvpn \
+  network-manager-vpnc \
+  nmap \
+  openvpn \
+  pasystray \
+  perl-doc \
+  pkg-config \
+  pnmixer \
+  powertop \
+  python-markdown \
+  python-parsedatetime \
+  python-setuptools \
+  python-simplejson \
+  python-tk \
+  python-vobject \
+  redshift-gtk \
+  remmina \
+  remmina-plugin-nx \
+  remmina-plugin-rdp \
+  remmina-plugin-vnc \
+  rofi \
+  ruby-ronn \
+  rxvt-unicode-256color \
+  scrot \
+  smartmontools \
+  stow \
+  tmux \
+  traceroute \
+  ubuntu-restricted-extras \
+  vim \
+  vim-gnome \
+  weather-util \
+  wireshark \
+  xclip \
+  xpad \
+  xscreensaver \
+  xscreensaver-data \
+  xscreensaver-gl \
+  xscreensaver-gl-extra \
+  xscreensaver-screensaver-bsod \
+  xscreensaver-screensaver-dizzy \
+  xscreensaver-screensaver-webcollage
+
+sudo dpkg-reconfigure libdvd-pkg
