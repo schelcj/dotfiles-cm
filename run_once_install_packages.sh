@@ -104,3 +104,5 @@ sudo apt-get -yqq install \
   xscreensaver-screensaver-webcollage
 
 sudo dpkg-reconfigure libdvd-pkg
+
+sudo apt-get -yqq remove gnome-screensaver
