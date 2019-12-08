@@ -1,3 +1,4 @@
+{{- if eq .chezmoi.hostname "klinger" }}
 [options]
 verbose = 1
 read_all = false
@@ -16,3 +17,4 @@ mailboxes = ("INBOX.Archive","INBOX.Sent")
 type = MDA_external
 path = /usr/bin/procmail
 arguments = ("-f", "%(sender)", "-m", "~/.procmailrc.d/avlug")
+{{- end }}
