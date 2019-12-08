@@ -1,0 +1,10 @@
+{{- if ne .chezmoi.hostname "klinger" }}
+.getmail/
+.mutt/
+.muttrc
+.netrc
+.newsbeuter/
+.offlineimaprc
+.procmailrc.d/
+.slrnrc
+{{- end }}

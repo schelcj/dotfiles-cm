@@ -1,4 +1,3 @@
-{{- if eq .chezmoi.hostname "klinger" }}
 [general]
 accounts = Pobox, Umich, Merit
 ui = ttyui
@@ -99,4 +98,3 @@ remoteport = 993
 folderfilter = lambda foldername: not re.search('(^Personal|Receipts|Travel|Work|All Mail|Important|Spam|Starred|Trash|Drafts|Backup|Priority|Notes|Scheduled|Later)',foldername)
 sslcacertfile = /etc/ssl/certs/ca-certificates.crt
 #auth_mechanisms = GSSAPI, CRAM-MD5, PLAIN, LOGIN
-{{- end }}

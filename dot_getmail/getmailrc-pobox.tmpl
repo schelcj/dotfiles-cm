@@ -1,4 +1,3 @@
-{{- if eq .chezmoi.hostname "kilinger" }}
 [options]
 verbose = 0
 read_all = false
@@ -17,4 +16,3 @@ mailboxes = ("[Gmail]/All Mail", "[Gmail]/Sent Mail")
 type = MDA_external
 path = /usr/bin/procmail
 arguments = ("-f", "%(sender)", "-m", "~/.procmailrc.d/pobox")
-{{- end }}
