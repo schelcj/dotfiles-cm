@@ -1,11 +1,13 @@
-{{- $email  := promptString "email" -}}
-{{- $lat    := promptString "Latitude" -}}
-{{- $lon    := promptString "Longitude" -}}
-{{- $indent := promptString "Perl Indent Columns" -}}
+{{- $email   := promptString "email" -}}
+{{- $lat     := promptString "Latitude" -}}
+{{- $lon     := promptString "Longitude" -}}
+{{- $indent  := promptString "Perl Indent Columns" -}}
+{{- $has_x11 := promptString "Use X11 [true|false]" -}}
 [data]
   email = "{{ $email }}"
   lat = "{{ $lat }}"
   lon = "{{ $lon }}"
+  has_x11 = "{{ $has_x11 }}"
 
   [data.perl]
     column_indent = "{{ $indent }}"

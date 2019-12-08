@@ -8,3 +8,12 @@
 .procmailrc.d/
 .slrnrc
 {{- end }}
+
+{{- if ne .has_x11 "true" }}
+.config/i3/
+.devispie/
+.gvimrc
+.urxvt/
+.Xdefaults
+.xsessionrc
+{{- end}}
