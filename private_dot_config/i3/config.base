@@ -136,6 +136,12 @@ mode "resize" {
 }
 bindsym $mod+r mode "resize"
 
+mode "pass-thru" {
+  bindsym $mod+t mode "default"
+}
+
+bindsym $mod+t mode "pass-thru"
+
 bindsym $mod+minus scratchpad show
 bindsym $mod+plus move scratchpad
 bindsym Control+Mod1+Left workspace prev_on_output
