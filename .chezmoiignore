@@ -9,7 +9,7 @@
 .slrnrc
 {{- end }}
 
-{{- if ne .has_x11 "true" }}
+{{- if eq .has_x11 "true" }}
 .config/i3/
 .devispie/
 .gvimrc
