@@ -227,6 +227,7 @@ iab <expr> dnow strftime("%c")
 iab <expr> dts strftime("%a %d %b %Y")
 
 let g:pad#dir="~/Dropbox/Documents/Notes/"
+let g:pad#local_dir=".notes"
 let g:pad#rename_files=0
 let g:pad#window_height=24
 let g:pad#default_file_extension=".md"
@@ -264,3 +265,5 @@ let g:org_agenda_files=['~/Dropbox/Documents/Org/index.org']
 let g:quicktask_snip_path = '~/Dropbox/Documents/Notes'
 let g:quicktask_snip_default_filetype = 'vimwiki'
 let g:quicktask_snip_file_ext = '.wiki'
+
+let g:go_version_warning = 0
