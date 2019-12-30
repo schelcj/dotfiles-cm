@@ -36,5 +36,3 @@ alias control-panel="XDG_CURRENT_DESKTOP=Unity7 ; unity-control-center"
 alias gnome-control-center="XDG_CURRENT_DESKTOP=GNOME gnome-control-center"
 
 alias sqlitestudio="/home/schelcj/Downloads/SQLiteStudio/sqlitestudio"
-
-alias ccm=~/src/tools/ccm.pl
