@@ -1,0 +1,13 @@
+{
+  "folders": [
+    {
+      "path": "%l"
+    }
+  ],
+  "settings": {
+    "perl-toolbox.syntax.includePaths": [
+      "%l/lib",
+      "~/srv/mnt/%r/carton/lib/perl5"
+    ]
+  }
+}
