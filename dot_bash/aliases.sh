@@ -9,5 +9,4 @@ alias mux="tmuxinator"
 alias smux="~/scripts/smux.pl"
 alias cm="chezmoi"
 
-alias ccm='/home/cscheller/src/tools/ccm.pl'
 alias csnapshot='docker run -it --rm --env HOME=/tmp -v $(pwd):/app -u $(id -u ${USER}):$(id -g ${USER}) carton'
