@@ -16,4 +16,8 @@
 .urxvt/
 .Xdefaults
 .xsessionrc
-{{- end}}
+{{- end }}
+
+{{- if ne .chezmoi.hostname "avesso" }}
+.ccm/
+{{- end }}
