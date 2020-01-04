@@ -1,3 +1,6 @@
 #!/bin/sh
-cd ~/.config/i3
-make
+
+if [ -e ~/.configi3 ]; then
+  cd ~/.config/i3
+  make
+fi
