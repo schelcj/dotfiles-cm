@@ -9,6 +9,14 @@
 .slrnrc
 {{- end }}
 
+{{- if ne .chezmoi.hostname "ressik" }}
+.config/pianobar/
+{{- end }}
+
+{{- if ne .chezmoi.hostname "potter" }}
+.config/pianobar/
+{{- end }}
+
 {{- if eq .has_x11 "true" }}
 .config/i3/
 .devispie/
