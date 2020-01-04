@@ -19,5 +19,5 @@
 {{- end }}
 
 {{- if ne .chezmoi.hostname "avesso" }}
-.ccm/
+.config/ccm/
 {{- end }}
