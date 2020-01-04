@@ -8,6 +8,7 @@
     "perl-toolbox.syntax.includePaths": [
       "%l/lib",
       "~/srv/export/%r/carton/lib/perl5"
-    ]
+    ],
+    "perl-toolbox.lint.exec": "/usr/bin/perlcritic -profile '%l/.perlcriticrc'",
   }
 }
