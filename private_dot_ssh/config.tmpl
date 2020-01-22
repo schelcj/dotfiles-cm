@@ -7,7 +7,7 @@ Host *
   TCPKeepAlive yes
   ControlPath ~/.ssh/master-%r@%h:%p
 
-{{- if ne .chezmoi.hostname "klinger" }}
+{{- if eq .chezmoi.osRelease.versionID "18.04" }}
 
 Include config.d/*.conf
 {{- end }}
