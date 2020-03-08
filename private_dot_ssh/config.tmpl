@@ -5,6 +5,7 @@ Host *
   ForwardX11Trusted no
   ServerAliveInterval 300
   TCPKeepAlive yes
+  ControlMaster auto
   ControlPath ~/.ssh/master-%r@%h:%p
 
 {{- if eq .chezmoi.osRelease.versionID "18.04" }}
