@@ -231,6 +231,7 @@ let g:pad#local_dir=".notes"
 let g:pad#rename_files=0
 let g:pad#window_height=24
 let g:pad#default_file_extension=".md"
+"let g:title_first_line=1
 
 augroup MD
   au! BufRead,BufNewFile *.md set foldmethod=manual
