@@ -36,3 +36,5 @@ alias control-panel="XDG_CURRENT_DESKTOP=Unity7 ; unity-control-center"
 alias gnome-control-center="XDG_CURRENT_DESKTOP=GNOME gnome-control-center"
 
 alias sqlitestudio="/home/schelcj/Downloads/SQLiteStudio/sqlitestudio"
+
+alias inkscape="/home/schelcj/bin/Inkscape-4035a4f-x86_64.AppImage"
