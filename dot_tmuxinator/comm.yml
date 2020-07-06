@@ -11,6 +11,6 @@ windows:
         - irc:
           - weechat
         - rss:
-          - newsbeuter
+          - newsboat
   - 4077th:
     -
