@@ -10,5 +10,8 @@
       "~/srv/export/%r/carton/local/lib/perl5"
     ],
     "perl-toolbox.lint.exec": "/usr/bin/perlcritic -profile '%l/.perlcriticrc'",
+  },
+  "terminal.integrated.env.linux": {
+    "THIS": "%n"
   }
 }

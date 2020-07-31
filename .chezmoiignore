@@ -1,4 +1,4 @@
-{{- if ne .chezmoi.hostname "klinger" }}
+{{- if ne .chezmoi.hostname "freedman" }}
 .getmail/
 .mutt/
 .muttrc
