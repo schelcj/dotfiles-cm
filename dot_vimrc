@@ -138,6 +138,7 @@ set list
 augroup VO
   au! BufRead,BufNewFile *.otl set nolist
   au! BufRead,BufNewFile *.md set nolist
+  au! BufRead,BufNewFile *.txt set nolist
 augroup end
 
 " Ovid's variable highlighting function
@@ -228,9 +229,9 @@ iab <expr> dts strftime("%a %d %b %Y")
 
 let g:pad#dir="~/Dropbox/Documents/Notes/"
 let g:pad#local_dir=".notes"
-let g:pad#rename_files=0
+let g:pad#rename_files=1
 let g:pad#window_height=24
-let g:pad#default_file_extension=".md"
+let g:pad#default_file_extension=".txt"
 "let g:title_first_line=1
 
 augroup MD
