@@ -16,6 +16,7 @@ hamster-indicator &
 indicator-sound-switcher &
 pasystray &
 devilspie -a &
+synergy &
 
 #/opt/extras.ubuntu.com/my-weather-indicator/bin/my-weather-indicator &
 /opt/extras.ubuntu.com/indicator-brightness/indicator-brightness &
