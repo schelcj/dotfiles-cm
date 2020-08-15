@@ -86,6 +86,7 @@ sudo apt-get -yqq install \
   scrot \
   smartmontools \
   stow \
+  tig \
   tmux \
   traceroute \
   ubuntu-restricted-extras \
