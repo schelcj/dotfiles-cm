@@ -28,6 +28,6 @@ README.md
 .xsessionrc
 {{- end }}
 
-{{- if ne .chezmoi.hostname "avesso" }}
+{{- if ne .chezmoi.hostname "abrusco" }}
 .config/ccm/
 {{- end }}

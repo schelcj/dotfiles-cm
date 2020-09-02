@@ -263,7 +263,7 @@ function! XTermPasteBegin()
   return ""
 endfunction
 
-let g:org_agenda_files=['~/Dropbox/Documents/Org/index.org']
+let g:org_agenda_files=['~/Dropbox/Documents/Org/*.org']
 let g:quicktask_snip_path = '~/Dropbox/Documents/Notes'
 let g:quicktask_snip_default_filetype = 'vimwiki'
 let g:quicktask_snip_file_ext = '.wiki'
