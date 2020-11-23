@@ -9,8 +9,7 @@ folder-hook 'Umich/*' 'macro index G "<shell-escape>offlineimap -u basic -1 -o -
 #folder-hook 'Umich/*' 'macro pager S "<shell-escape>mairix -f ~/Dropbox/dot-files/mairix/mairixrc-umich " "Run mairix search"'
 #folder-hook 'Umich/*' 'macro index S "<shell-escape>mairix -f ~/Dropbox/dot-files/mairix/mairixrc-umich " "Run mairix search"'
 
-# folder-hook 'Umich/*' 'set smtp_url="smtp://schelcj%40umich.edu@smtp.gmail.com:587/"'
-folder-hook 'Merit/*' 'set smtp_url="smtp://schelcj%40pobox.com@smtp.pobox.com:587/"'
+folder-hook 'Umich/*' 'set smtp_url="smtp://schelcj@umich.edu@smtp.gmail.com:587/"'
 
 folder-hook flux-support set strict_threads=no
 folder-hook flux-support set sort_re=no

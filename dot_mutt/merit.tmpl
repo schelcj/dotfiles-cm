@@ -7,8 +7,9 @@ folder-hook 'Merit/*' 'color status black cyan'
 folder-hook 'Merit/*' 'color indicator black cyan'
 folder-hook 'Merit/*' 'macro index G "<shell-escape>offlineimap -u basic -1 -o -a Merit<return>" "Fetch mail from my Merit account"'
 
-# folder-hook 'Merit/*' 'set smtp_url="smtp://schelcj%40merit.edu@smtp.gmail.com:587/"'
-folder-hook 'Merit/*' 'set smtp_url="smtp://schelcj%40pobox.com@smtp.pobox.com:587/"'
+folder-hook 'Merit/*' 'set smtp_oauth_refresh_command="~/.mutt/oauth2.py --quiet --user={{- (trimAll "\n" (index (lastpass "Merit AD") 0).note.email) }} --client_id={{- (trimAll "\n" (index (lastpass "Merit AD") 0).note.oauthClientId) }} --client_secret={{- (trimAll "\n" (index (lastpass "Merit AD") 0).note.oauthClientSecret) }} --refresh_token={{- (trimAll "\n" (index (lastpass "Merit AD") 0).note.oauthRefreshToken) }}"'
+folder-hook 'Merit/*' 'set smtp_authenticators="oauthbearer"'
+folder-hook 'Merit/*' 'set smtp_url="smtp://{{- (trimAll "\n" (index (lastpass "Merit AD") 0).note.email) -}}@smtp.gmail.com:587/"'
 
 lists software-dev productmanagement it-dev staff radb-support
 subscribe software-dev productmanagement it-dev staff radb-support

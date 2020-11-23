@@ -11,3 +11,5 @@ folder-hook . set sort_re=yes
 folder-hook . set collapse_unread=no
 folder-hook . unset crypt_autosign
 folder-hook . unset smtp_url
+folder-hook . unset smtp_authenticators
+folder-hook . unset smtp_oauth_refresh_command
