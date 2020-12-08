@@ -1,8 +1,7 @@
 ( if
 ( or
 ( contains ( window_class ) "Code" )
-( contains ( window_class ) "Spotify" )
-( contains ( window_class ) "Clockify" )
+( contains ( window_class ) "Emacs27" )
 )
 ( begin
 ( spawn_async (str "transset-df -i " (window_xid) " 0.85" ))
