@@ -2,7 +2,11 @@
 (tool-bar-mode -1)
 
 ;; want my line numbers back
-(setq global-linum-mode t)
+; (setq global-linum-mode t)
+(setq global-display-line-numbers-mode t)
+
+(setq backup-directory-alist
+      `(("." . ,(concat user-emacs-directory "~/tmp/"))))
 
 (require 'package)
 
@@ -19,11 +23,9 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(custom-safe-themes
-   (quote
-    ("2809bcb77ad21312897b541134981282dc455ccd7c14d74cc333b6e549b824f3" default)))
+   '("2809bcb77ad21312897b541134981282dc455ccd7c14d74cc333b6e549b824f3" default))
  '(package-selected-packages
-   (quote
-    (powerline-evil powerline deft evil solarized-theme))))
+   '(org-download pdf-tools magit perlbrew org-journal powerline-evil powerline deft evil solarized-theme)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -41,11 +43,17 @@
 ;; misc org-mode settings
 (setq org-agenda-files '("~/Documents/Org/"))
 (setq org-log-done `time)
+(add-hook 'org-mode-hook 'org-indent-mode)
 ;; (setq org-log-done `note)
+
+;; org-journal setup
+(setq org-journal-dir "~/Documents/Org/journal/")
+(setq org-journal-date-format "%A, %d %B %Y")
+(require 'org-journal)
 
 ;; load up babel languages
 (org-babel-do-load-languages 'org-babel-load-languages
-    '((sh         . t)
+    '((shell      . t)
 	(js         . t)
 	(emacs-lisp . t)
 	(perl       . t)
@@ -68,4 +76,15 @@
 
 ;; bring back powerline
 (require 'powerline)
-(powerline-vim-theme)
+(powerline-default-theme)
+
+;; bring in magit
+(require 'magit)
+
+(require 'pdf-tools)
+(setq TeX-view-program-selection '((output-pdf "PDF Tools"))
+      TeX-view-program-list '(("PDF Tools" TeX-pdf-tools-sync-view))
+      TeX-source-correlate-start-server t)
+
+(add-hook 'TeX-after-compilation-finished-functions
+          #'TeX-revert-document-buffer)
