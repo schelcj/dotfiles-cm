@@ -25,7 +25,7 @@
  '(custom-safe-themes
    '("2809bcb77ad21312897b541134981282dc455ccd7c14d74cc333b6e549b824f3" default))
  '(package-selected-packages
-   '(org-download pdf-tools magit perlbrew org-journal powerline-evil powerline deft evil solarized-theme)))
+   '(markdown-mode+ markdown-mode org-bullets org-beautify-theme org-download pdf-tools magit perlbrew org-journal powerline-evil powerline deft evil solarized-theme)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -46,10 +46,37 @@
 (add-hook 'org-mode-hook 'org-indent-mode)
 ;; (setq org-log-done `note)
 
+(setq org-refile-targets (quote ((nil :maxlevel . 9)
+                                 (org-agenda-files :maxlevel . 9))))
+
+(global-set-key [f7] 'org-journal-new-entry)
+(global-set-key [f9] 'org-agenda)
+(global-set-key [f12] 'org-capture)
+
+(setq org-directory "~/Documents/Org")
+(setq org-default-notes-file (concat org-directory "/notes.org"))
+(setq org-hide-emphasis-markers t)
+(setq org-capture-templates
+      '(("m" "Meeting" entry (file org-default-notes-file)
+	 "* MEETING with %?\n%u")
+        ("t" "Todo" entry (file org-default-notes-file)
+	 "* TODO %?\n%U") ))
+
+(font-lock-add-keywords 'org-mode
+                        '(("^ +\\([-*]\\) "
+                            (0 (prog1 () (compose-region (match-beginning 1) (match-end 1) "•"))))))
+
+(font-lock-add-keywords 'org-mode
+                        '(("^\\([-*]\\) "
+                            (0 (prog1 () (compose-region (match-beginning 1) (match-end 1) "•"))))))
+
 ;; org-journal setup
+(require 'org-journal)
 (setq org-journal-dir "~/Documents/Org/journal/")
 (setq org-journal-date-format "%A, %d %B %Y")
-(require 'org-journal)
+
+(require 'org-bullets)
+(add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
 
 ;; load up babel languages
 (org-babel-do-load-languages 'org-babel-load-languages
@@ -65,8 +92,15 @@
 ;; https://jblevins.org/projects/deft/
 ;; this is mainly to give me access to my hundreds of vim-pad notes
 (require 'deft)
+(global-set-key [f8] `deft)
 (setq deft-extensions '("txt"))
 (setq deft-directory "~/Documents/Notes")
+;; (setq deft-use-filename-as-title t)
+(setq deft-file-naming-rules
+       '((noslash . "-")
+         (nospace . "-")
+         (case-fn . downcase)))
+
 
 ;; https://www.emacswiki.org/emacs/RecentFiles
 (recentf-mode 1)
