@@ -227,7 +227,7 @@ noremap <F3> :noh<CR>
 iab <expr> dnow strftime("%c")
 iab <expr> dts strftime("%a %d %b %Y")
 
-let g:pad#dir="~/Dropbox/Documents/Notes/"
+let g:pad#dir="~/Dropbox/Notes/"
 let g:pad#local_dir=".notes"
 let g:pad#rename_files=1
 let g:pad#window_height=24
@@ -263,8 +263,8 @@ function! XTermPasteBegin()
   return ""
 endfunction
 
-let g:org_agenda_files=['~/Dropbox/Documents/Org/*.org']
-let g:quicktask_snip_path = '~/Dropbox/Documents/Notes'
+let g:org_agenda_files=['~/Dropbox/Org/*.org']
+let g:quicktask_snip_path = '~/Dropbox/Notes'
 let g:quicktask_snip_default_filetype = 'vimwiki'
 let g:quicktask_snip_file_ext = '.wiki'
 

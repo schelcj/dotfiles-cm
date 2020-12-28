@@ -25,7 +25,7 @@
  '(custom-safe-themes
    '("2809bcb77ad21312897b541134981282dc455ccd7c14d74cc333b6e549b824f3" default))
  '(package-selected-packages
-   '(markdown-mode+ markdown-mode org-bullets org-beautify-theme org-download pdf-tools magit perlbrew org-journal powerline-evil powerline deft evil solarized-theme)))
+   '(buffer-flip markdown-mode+ markdown-mode org-bullets org-beautify-theme org-download pdf-tools magit perlbrew org-journal powerline-evil powerline deft evil solarized-theme)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -41,7 +41,7 @@
 (evil-mode 1)
 
 ;; misc org-mode settings
-(setq org-agenda-files '("~/Documents/Org/"))
+(setq org-agenda-files '("~/Dropbox/Org/"))
 (setq org-log-done `time)
 (add-hook 'org-mode-hook 'org-indent-mode)
 ;; (setq org-log-done `note)
@@ -53,12 +53,14 @@
 (global-set-key [f9] 'org-agenda)
 (global-set-key [f12] 'org-capture)
 
-(setq org-directory "~/Documents/Org")
-(setq org-default-notes-file (concat org-directory "/notes.org"))
+(setq org-directory "~/Dropbox/Org")
+(setq org-default-notes-file (concat org-directory "/inbox.org"))
 (setq org-hide-emphasis-markers t)
 (setq org-capture-templates
       '(("m" "Meeting" entry (file org-default-notes-file)
 	 "* MEETING with %?\n%u")
+        ("n" "Note" entry (file org-default-notes-file)
+	 "* NOTE %?\n%U")
         ("t" "Todo" entry (file org-default-notes-file)
 	 "* TODO %?\n%U") ))
 
@@ -67,12 +69,12 @@
                             (0 (prog1 () (compose-region (match-beginning 1) (match-end 1) "•"))))))
 
 (font-lock-add-keywords 'org-mode
-                        '(("^\\([-*]\\) "
+                        '(("^\\([-]\\) "
                             (0 (prog1 () (compose-region (match-beginning 1) (match-end 1) "•"))))))
 
 ;; org-journal setup
 (require 'org-journal)
-(setq org-journal-dir "~/Documents/Org/journal/")
+(setq org-journal-dir "~/Dropbox/Org/journal/")
 (setq org-journal-date-format "%A, %d %B %Y")
 
 (require 'org-bullets)
@@ -93,8 +95,8 @@
 ;; this is mainly to give me access to my hundreds of vim-pad notes
 (require 'deft)
 (global-set-key [f8] `deft)
-(setq deft-extensions '("txt"))
-(setq deft-directory "~/Documents/Notes")
+(setq deft-extensions '("txt" "md"))
+(setq deft-directory "~/Dropbox/Notes")
 ;; (setq deft-use-filename-as-title t)
 (setq deft-file-naming-rules
        '((noslash . "-")
@@ -122,3 +124,20 @@
 
 (add-hook 'TeX-after-compilation-finished-functions
           #'TeX-revert-document-buffer)
+
+;; buffer-flip for alt-tab buffer switching
+(require `buffer-flip)
+(global-set-key (kbd "M-<tab>") 'buffer-flip)
+
+;; transient keymap used once cycling starts
+(setq buffer-flip-map
+      (let ((map (make-sparse-keymap)))
+        (define-key map (kbd "M-<tab>")   'buffer-flip-forward) 
+        (define-key map (kbd "M-S-<tab>") 'buffer-flip-backward)
+        (define-key map (kbd "M-ESC")     'buffer-flip-abort)
+        map))
+
+;; buffers matching these patterns will be skipped
+(setq buffer-flip-skip-patterns 
+      '("^\\*helm\\b"
+        "^\\*swiper\\*$"))
