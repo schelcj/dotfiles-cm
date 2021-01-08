@@ -6,7 +6,12 @@
 (setq global-display-line-numbers-mode t)
 
 (setq backup-directory-alist
-      `(("." . ,(concat user-emacs-directory "~/tmp/"))))
+      `(("." . ,"~/tmp/")))
+
+;; (setq backup-directory-alist
+;;                 `((".*" . ,temporary-file-directory)))
+;; (setq auto-save-file-name-transforms
+;;                 `((".*" ,temporary-file-directory t)))
 
 (require 'package)
 
@@ -25,7 +30,7 @@
  '(custom-safe-themes
    '("2809bcb77ad21312897b541134981282dc455ccd7c14d74cc333b6e549b824f3" default))
  '(package-selected-packages
-   '(buffer-flip markdown-mode+ markdown-mode org-bullets org-beautify-theme org-download pdf-tools magit perlbrew org-journal powerline-evil powerline deft evil solarized-theme)))
+   '(org-protocol-jekyll buffer-flip markdown-mode+ markdown-mode org-bullets org-beautify-theme org-download pdf-tools magit perlbrew org-journal powerline-evil powerline deft evil solarized-theme)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -58,7 +63,7 @@
 (setq org-hide-emphasis-markers t)
 (setq org-capture-templates
       '(("m" "Meeting" entry (file org-default-notes-file)
-	 "* MEETING with %?\n%u")
+	 "* %u MEETING with %?\n")
         ("n" "Note" entry (file org-default-notes-file)
 	 "* NOTE %?\n%U")
         ("t" "Todo" entry (file org-default-notes-file)
@@ -71,6 +76,10 @@
 (font-lock-add-keywords 'org-mode
                         '(("^\\([-]\\) "
                             (0 (prog1 () (compose-region (match-beginning 1) (match-end 1) "•"))))))
+
+;; enable evil mode in the org-agenda buffers
+;; (require 'evil-org)
+;; (evil-org-set-key-theme '(textobjects insert navigation additional shift todo heading))
 
 ;; org-journal setup
 (require 'org-journal)
@@ -141,3 +150,12 @@
 (setq buffer-flip-skip-patterns 
       '("^\\*helm\\b"
         "^\\*swiper\\*$"))
+
+;; setup emacsclient
+;;
+;; commands to setup gconf:
+;; gconftool-2 -s /desktop/gnome/url-handlers/org-protocol/command '/usr/bin/emacsclient %s' --type String
+;; gconftool-2 -s /desktop/gnome/url-handlers/org-protocol/enabled --type Boolean true
+;; (server-start)
+;; (add-to-list 'load-path "~/Dropbox/Org")
+;; (require 'org-protocol)
