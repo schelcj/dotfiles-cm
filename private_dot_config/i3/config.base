@@ -179,7 +179,8 @@ bindsym XF86AudioLowerVolume exec ~/scripts/volctl down
 bindsym XF86AudioMute exec ~/scripts/volctl mute
 
 bindsym $mod+Control+w exec ~/scripts/weather.sh
-bindsym Print exec scrot -e 'mv $f ~/Pictures'
+#bindsym Print exec scrot -e 'mv $f ~/Pictures'
+bindsym Print exec flameshot gui -p ~/Pictures/
 
 workspace_auto_back_and_forth yes
 
@@ -200,10 +201,13 @@ $i3-theme-window
 
 for_window [class="^Slack"] mark --add slack
 for_window [class="^Spotify"] mark --add spotify
+for_window [class="^Emacs"] mark --add emacs
 
-bindsym Mod4+1 [con_mark="comm"] focus
-bindsym Mod4+2 [con_mark="spotify"] focus
+bindsym Control+1 [con_mark="emacs"] focus
+bindsym Control+2 [con_mark="music"] focus
 bindsym Mod4+3 [con_mark="slack"] focus
+bindsym Mod4+4 [con_mark="comm"] focus
+bindsym Mod4+5 [con_mark="spotify"] focus
 
 bindsym $mod+Shift+exclam move workspace 1
 bindsym $mod+Shift+at move workspace 2
