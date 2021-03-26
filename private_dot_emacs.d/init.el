@@ -28,9 +28,11 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(custom-safe-themes
-   '("2809bcb77ad21312897b541134981282dc455ccd7c14d74cc333b6e549b824f3" default))
+   '("7661b762556018a44a29477b84757994d8386d6edee909409fabe0631952dad9" "51ec7bfa54adf5fff5d466248ea6431097f5a18224788d0bd7eb1257a4f7b773" "830877f4aab227556548dc0a28bf395d0abe0e3a0ab95455731c9ea5ab5fe4e1" "285d1bf306091644fb49993341e0ad8bafe57130d9981b680c1dbd974475c5c7" "c433c87bd4b64b8ba9890e8ed64597ea0f8eb0396f4c9a9e01bd20a04d15d358" "2809bcb77ad21312897b541134981282dc455ccd7c14d74cc333b6e549b824f3" default))
+ '(org-trello-current-prefix-keybinding "C-c o" nil (org-trello))
+ '(org-trello-files '("~/Dropbox/Org/concert-projects.org") nil (org-trello))
  '(package-selected-packages
-   '(org-protocol-jekyll buffer-flip markdown-mode+ markdown-mode org-bullets org-beautify-theme org-download pdf-tools magit perlbrew org-journal powerline-evil powerline deft evil solarized-theme)))
+   '(gruvbox-theme ob-mermaid mermaid-mode evil-org org-trello neotree org-protocol-jekyll buffer-flip markdown-mode+ markdown-mode org-bullets org-beautify-theme org-download pdf-tools magit perlbrew org-journal powerline-evil powerline deft evil solarized-theme)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -40,6 +42,7 @@
 
 ;; is there any other theme?
 (load-theme 'solarized-dark t)
+;; (load-theme `gruvbox-dark-medium t)
 
 ;; I've been using vi/vim for far too long...
 (require 'evil)
@@ -58,6 +61,12 @@
 (global-set-key [f9] 'org-agenda)
 (global-set-key [f12] 'org-capture)
 
+(defun transform-square-brackets-to-round-ones(string-to-transform)
+  "Transforms [ into ( and ] into ), other chars left unchanged."
+  (concat 
+  (mapcar #'(lambda (c) (if (equal c ?[) ?\( (if (equal c ?]) ?\) c))) string-to-transform))
+  )
+
 (setq org-directory "~/Dropbox/Org")
 (setq org-default-notes-file (concat org-directory "/inbox.org"))
 (setq org-hide-emphasis-markers t)
@@ -65,9 +74,13 @@
       '(("m" "Meeting" entry (file org-default-notes-file)
 	 "* %u MEETING with %?\n")
         ("n" "Note" entry (file org-default-notes-file)
-	 "* NOTE %?\n%U")
+	 "* NOTE %?\n/Entered on/ %U")
         ("t" "Todo" entry (file org-default-notes-file)
-	 "* TODO %?\n%U") ))
+	 "* TODO %?\n/Entered on/ %U")
+	("p" "Protocol" entry (file+headline ,(file org-default-notes-file) "Inbox")
+        "* %^{Title}\nSource: %u, %c\n #+BEGIN_QUOTE\n%i\n#+END_QUOTE\n\n\n%?")	
+	("L" "Protocol Link" entry (file+headline ,(file org-default-notes-file) "Inbox")
+        "* %? [[%:link][%(transform-square-brackets-to-round-ones \"%:description\")]]\n") ))
 
 (font-lock-add-keywords 'org-mode
                         '(("^ +\\([-*]\\) "
@@ -80,6 +93,7 @@
 ;; enable evil mode in the org-agenda buffers
 ;; (require 'evil-org)
 ;; (evil-org-set-key-theme '(textobjects insert navigation additional shift todo heading))
+;; (add-hook 'org-mode-hook 'evil-org-mode)
 
 ;; org-journal setup
 (require 'org-journal)
@@ -100,17 +114,31 @@
 	(css        . t)
 	(plantuml   . t)))
 
+;; (add-to-list 'org-agenda-custom-commands
+;;              '("w" "Waiting For" tags "+waitingfor"))
+
+;; (add-to-list 'org-agenda-custom-commands
+;;              '("f" "Follow Up" tags "+followup"))
+
+;; (add-to-list 'org-agenda-custom-commands
+;;              '("h" "On Hold" tags "+ohhold"))
+
+;; (add-to-list 'org-agenda-custom-commands
+;;              '("i" "In Progress" tags "+inprogress"))
+
 ;; https://jblevins.org/projects/deft/
 ;; this is mainly to give me access to my hundreds of vim-pad notes
 (require 'deft)
-(global-set-key [f8] `deft)
-(setq deft-extensions '("txt" "md"))
 (setq deft-directory "~/Dropbox/Notes")
-;; (setq deft-use-filename-as-title t)
+(setq deft-extensions '("org" "txt" "md"))
+(setq deft-extension "org")
+(setq deft-text-mode 'org-mode)
+(setq deft-use-filename-as-title t)
 (setq deft-file-naming-rules
        '((noslash . "-")
          (nospace . "-")
          (case-fn . downcase)))
+(global-set-key [f8] `deft)
 
 
 ;; https://www.emacswiki.org/emacs/RecentFiles
@@ -159,3 +187,22 @@
 ;; (server-start)
 ;; (add-to-list 'load-path "~/Dropbox/Org")
 ;; (require 'org-protocol)
+
+(require `org-trello)
+
+
+;; load mermaid graph editor
+(setenv "PATH" (concat "/home/schelcj/Downloads/node-v10.15.3-linux-x64/bin" ":" (getenv "PATH")))
+(require 'mermaid-mode)
+(setq mermaid-mmdc-location "/home/schelcj/node_modules/.bin/mmdc")
+;; (require 'ob-mermaid)
+;; (setq ob-mermaid-cli-path "/home/schelcj/node_modules/.bin/mmdc")
+
+;; GTD setup following
+;; https://www.labri.fr/perso/nrougier/GTD/index.html
+(define-key global-map (kbd "C-c c") 'org-capture)
+(define-key global-map (kbd "C-c j") 'org-journal-new-entry)
+(define-key global-map (kbd "C-c a") 'org-agenda)
+
+;; Hide tags in org-agenda todo search results
+;; (setq org-agenda-hide-tags-regexp ".")

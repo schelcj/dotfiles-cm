@@ -38,3 +38,7 @@ alias gnome-control-center="XDG_CURRENT_DESKTOP=GNOME gnome-control-center"
 alias sqlitestudio="/home/schelcj/Downloads/SQLiteStudio/sqlitestudio"
 
 alias inkscape="/home/schelcj/bin/Inkscape-4035a4f-x86_64.AppImage"
+
+alias postman="/home/schelcj/Downloads/Postman/Postman"
+
+alias dadjoke='curl -s https://fatherhood.gov/jsonapi/node/dad_jokes | jq ".data[$(( $RANDOM % 50 ))] | {setup: .attributes.field_joke_opener, punchline: .attributes.field_joke_response }"'
